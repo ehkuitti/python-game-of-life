@@ -1,0 +1,15 @@
+Game Over!
+
+Thanks for playing
+
+		*CREDITS:*
+
+Based on the classic "Game of Life v1" (Java, Finnish) 
+
+Lead developer: Eetu Kuittinen
+Gameplay Designer: Miika Mononen
+SFX Editor: Marlo Pietarinen
+
+Special thanks to Kaiffari and Jasse
+
+All rights reseved under Tomte Corporation

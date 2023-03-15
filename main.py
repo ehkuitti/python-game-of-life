@@ -1,22 +1,52 @@
-def open_instructions():
+INSTRUCTIONS = "instructions.txt"
+CREDITS = "credits.txt"
 
-    # Strings
-    filename = "instructions.txt"
+
+def open_file(file_name):
 
     while True:
         try:
-            instruction_file = open(filename, mode="r")
+            text_file = open(file_name, mode="r")
             break
 
         except IOError:
-            print("Please check that the instructions file is placed in the "
-                  "same folder with the program.")
-            print("Press enter to try again.")
+            print(f"Please make sure that the text file {file_name} is placed "
+                  f"in the the same folder with the program "
+                  "and then run the game again.")
+            return None
 
-    for line in instruction_file:
+    return text_file
+
+
+def print_file_contents(text_file):
+
+    for line in text_file:
         print(line)
 
-    return instruction_file
+
+def parse_required_text_files():
+    instructions_file = open_file(INSTRUCTIONS)
+    if instructions_file is not None:
+        print_file_contents(instructions_file)
+
+    credits_file = open_file(CREDITS)
+
+
+def print_welcome_message():
+
+def ask_player_name():
+
+    # Booleans
+    is_player_name_valid = False
+
+    while not is_player_name_valid:
+        player_name = input("What's your name?")
+        if player_name == "":
+            print("Please input a valid name!")
+
+        else:
+            print_welcome_message()
+
 
 
 def main():
@@ -33,7 +63,8 @@ def main():
     player_name = ""
     player_place_of_birth = ""
 
-    file = open_instructions()
+    parse_required_text_files()
+    player_name = ask_player_name()
 
 
 if __name__ == "__main__":
