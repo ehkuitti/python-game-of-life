@@ -2,7 +2,7 @@ Game Over!
 
 Thanks for playing
 
-		*CREDITS:*
+*CREDITS:*
 
 Based on the classic "Game of Life v1" (Java, Finnish) 
 
