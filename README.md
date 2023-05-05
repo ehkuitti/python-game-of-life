@@ -13,6 +13,9 @@ This project is made with PyCharm 2022.3 and Python 3.10.
 
 ## Improvements
 
-The game is written from the ground up using Python. There are certain improvements on top of the original Java version. For instance,
-this version always validates the user's input. For example, if the required input type is an integer, the program will print an error if the input contains letters. This version also has 
-some minor improvements, like randomly generated welcome messages using `switch`. On top of that, this version also comes with installation and playing instructions, which are read using `open` from a text file within the build directory.
+The game is written from the ground up using Python. There are certain improvements on top of the original Java version. For instance, this version
+
+- Uses OOP
+- Checks the validity of user input
+- Uses random values to alter the game experience
+- Supports reading text from files, making it easy to format playing instructions and all kinds of text
