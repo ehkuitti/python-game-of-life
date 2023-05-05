@@ -3,6 +3,30 @@ from random import randrange
 INSTRUCTIONS = "instructions.txt"
 CREDITS = "credits.txt"
 
+class Player:
+    def __init__(self, name="", age=0, place_of_birth=""):
+        self.__name = name
+        self.__age = age
+        self.__place_of_birth = place_of_birth
+
+    def get_age(self):
+        return self.__age
+
+    def get_name(self):
+        return self.__name
+
+    def get_place_of_birth(self):
+        return self.__place_of_birth
+
+    def set_age(self, age):
+        self.__age = age
+
+    def set_name(self, name):
+        self.__name = name
+
+    def set_place_of_birth(self, place_of_birth):
+        self.__place_of_birth = place_of_birth
+
 
 def open_file(file_name):
 
@@ -107,9 +131,9 @@ def ask_player_name():
     return player_name
 
 
-def is_input_outside_range(low_limit, high_limit):
+def is_input_outside_range(my_number, low_limit, high_limit):
 
-    if low_limit > input > high_limit:
+    if low_limit > int(my_number) > high_limit:
         return True
 
     return False
@@ -145,7 +169,7 @@ def ask_place_of_birth():
         if is_input_empty(place_of_birth_selection):
             print("Please input a number!")
 
-        elif is_input_outside_range(1, 4):
+        elif is_input_outside_range(place_of_birth_selection, 1, 4):
             print("Please input a number within desired_high_limit 1-3!")
 
         else:
@@ -198,20 +222,16 @@ def main():
     # Booleans
     is_place_of_birth_valid = False
 
-    # Integers
-    switch_operator = int(0)
-
-    # Strings
-    player_name = ""
-    player_place_of_birth = ""
+    player = Player()
 
     parse_required_text_files()
 
     # Asking information from the player
-    player_name = ask_player_name()
-    place_of_birth = ask_place_of_birth()
+    player.set_name(ask_player_name())
+    player.set_place_of_birth(ask_place_of_birth())
 
-    if life_path_according_to_place_of_birth(place_of_birth) is None:
+    if life_path_according_to_place_of_birth(player.get_place_of_birth()) \
+            is None:
         return
 
 
