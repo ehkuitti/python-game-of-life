@@ -2,7 +2,7 @@
 
 ## About the project
 
-This project is a remake of me and my friends' The Game Of Life ([Elämän Peli](https://github.com/ehkuitti/elaman-peli-java)) school game project. That project
+This project is a remake of me and my friends' The Game Of Life ([Elämän Peli](https://github.com/ehkuitti/elaman-peli-java)) school game project made in Java. That project
 was a school project for the course "The Basics of Programming" I took in my school, Laurea University of Applied Sciences. The idea of the original project was to
 be a "game of life". The player plays through different stages of life, like birth, going to schools and attending various exams. There are also random
 accidents that can lead to the player's death. Basically the game's purporse is to simulate life in a fun yet simple way. 
