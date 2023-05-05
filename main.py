@@ -3,6 +3,7 @@ from random import randrange
 INSTRUCTIONS = "instructions.txt"
 CREDITS = "credits.txt"
 
+
 class Player:
     def __init__(self, name="", age=0, place_of_birth=""):
         self.__name = name
@@ -28,7 +29,7 @@ class Player:
         self.__place_of_birth = place_of_birth
 
 
-def open_file(file_name):
+def open_a_file(file_name):
 
     while True:
         try:
@@ -51,19 +52,19 @@ def print_file_contents(text_file):
 
 
 def parse_required_text_files():
-    instructions_file = open_file(INSTRUCTIONS)
+    instructions_file = open_a_file(INSTRUCTIONS)
     if instructions_file is not None:
         print_file_contents(instructions_file)
         instructions_file.close()
 
-    credits_file = open_file(CREDITS)
+    credits_file = open_a_file(CREDITS)
     credits_file.close()
 
 
-def generate_random_value(desired_high_limit):
+def generate_random_value(desired_high_limit=10):
     """This function generates a random value below the desired high limit
     and then returns it to the caller. The randrange function is imported
-    from the random built-in library."""
+    from the random built-in library. The default range is 0-9."""
 
     return randrange(desired_high_limit)
 
@@ -132,9 +133,18 @@ def ask_player_name():
 
 
 def is_input_outside_range(my_number, low_limit, high_limit):
+    """Function checks whether a number is withing a desired range and
+    returns a boolean based on the answer. The variable my_number is
+    converted into an integer to avoid type errors. Returns a false if the
+    conversion fails."""
 
-    if low_limit > int(my_number) > high_limit:
-        return True
+    try:
+        if low_limit > int(my_number) > high_limit:
+            return True
+    except TypeError:
+        return False
+    except ValueError:
+        return False
 
     return False
 
@@ -190,7 +200,7 @@ def ask_place_of_birth():
 
 
 def print_credits():
-    credits_file = open_file("credits.txt")
+    credits_file = open_a_file("credits.txt")
     print_file_contents(credits_file)
     
 
