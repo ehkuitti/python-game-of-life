@@ -9,7 +9,7 @@ accidents that can lead to the player's death. Basically the game's purporse is 
 
 ## Implementation
 
-This project is made with PyCharm 2022.3 and Python 3.10.
+This project is made with PyCharm 2023 and Python 3.10.
 
 ## Improvements
 
