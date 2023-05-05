@@ -1,7 +1,8 @@
-import random
+from random import randrange
 
 INSTRUCTIONS = "instructions.txt"
 CREDITS = "credits.txt"
+
 
 def open_file(file_name):
 
@@ -35,14 +36,19 @@ def parse_required_text_files():
     credits_file.close()
 
 
-def generate_random_value():
+def generate_random_value(desired_high_limit):
+    """This function generates a random value below the desired high limit
+    and then returns it to the caller. The randrange function is imported
+    from the random built-in library."""
 
-    return random.uniform(0, 11)
+    return randrange(desired_high_limit)
 
 
 def print_welcome_message(player_name):
 
-    random_value = generate_random_value()
+    amount_of_options = 11
+
+    random_value = generate_random_value(amount_of_options)
 
     if random_value == 0:
         print(f"I love the name {player_name}!")
@@ -70,6 +76,9 @@ def print_welcome_message(player_name):
 
 
 def is_input_empty(my_input):
+    """The function stripts the input of whitespaces. If the result of this
+    operation is an empty string, then the player didn't input anything.
+    Returns a boolean value based on the result."""
 
     if my_input.strip() == "":
         return True
@@ -77,8 +86,9 @@ def is_input_empty(my_input):
     return False
 
 
-
 def ask_player_name():
+
+    # VARIABLE INITIALIZATIONS ORDERED BY TYPE ALPHABETICALLY
 
     # Booleans
     is_player_name_valid = False
@@ -87,7 +97,7 @@ def ask_player_name():
     player_name = ""
 
     while not is_player_name_valid:
-        player_name = input("What's your name?")
+        player_name = input("What's your name? ")
         if is_input_empty(player_name):
             print("Please input a valid name!")
         else:
@@ -102,11 +112,12 @@ def is_input_outside_range(low_limit, high_limit):
     if low_limit > input > high_limit:
         return True
 
-    else:
-        return False
+    return False
 
 
 def ask_place_of_birth():
+
+    # VARIABLE INITIALIZATIONS ORDERED BY TYPE ALPHABETICALLY
 
     # Booleans
     is_place_of_birth_valid = False
@@ -133,15 +144,20 @@ def ask_place_of_birth():
     while not is_place_of_birth_valid:
         if is_input_empty(place_of_birth_selection):
             print("Please input a number!")
+
         elif is_input_outside_range(1, 4):
-            print("Please input a number within range 1-3!")
+            print("Please input a number within desired_high_limit 1-3!")
+
         else:
+
             if place_of_birth_selection == helsinki:
                 place_of_birth = "Helsinki"
                 is_place_of_birth_valid = True
+
             elif place_of_birth_selection == tampere:
                 place_of_birth = "Tampere"
                 is_place_of_birth_valid = True
+
             else:
                 place_of_birth = "Turku"
                 is_place_of_birth_valid = True
@@ -160,7 +176,8 @@ def life_path_turku():
 
 
 def life_path_not_turku():
-    pass
+    """TO BE IMPLEMENTED. The game continues if the player chooses not to be
+    born in Turku, i.e. not to die immediately."""
 
 
 def life_path_according_to_place_of_birth(place_of_birth):
@@ -196,7 +213,6 @@ def main():
 
     if life_path_according_to_place_of_birth(place_of_birth) is None:
         return
-
 
 
 if __name__ == "__main__":
