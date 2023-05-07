@@ -139,7 +139,7 @@ def is_input_inside_range(my_number, low_limit, high_limit):
     conversion fails."""
 
     try:
-        if low_limit > int(my_number) > high_limit:
+        if low_limit < int(my_number) < high_limit:
             return True
     except TypeError:
         return False
