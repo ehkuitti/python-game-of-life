@@ -132,7 +132,7 @@ def ask_player_name():
     return player_name
 
 
-def is_input_outside_range(my_number, low_limit, high_limit):
+def is_input_inside_range(my_number, low_limit, high_limit):
     """Function checks whether a number is withing a desired range and
     returns a boolean based on the answer. The variable my_number is
     converted into an integer to avoid type errors. Returns a false if the
@@ -173,14 +173,14 @@ def ask_place_of_birth():
     print("2: Tampere")
     print("3: Turku")
 
-    place_of_birth_selection = input()
-
     while not is_place_of_birth_valid:
+        place_of_birth_selection = input()
+
         if is_input_empty(place_of_birth_selection):
             print("Please input a number!")
 
-        elif is_input_outside_range(place_of_birth_selection, 1, 4):
-            print("Please input a number within desired_high_limit 1-3!")
+        elif not is_input_inside_range(place_of_birth_selection, 1, 4):
+            print("Please input a number within range 1-3!")
 
         else:
 
