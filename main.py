@@ -1,14 +1,15 @@
 from random import randrange
 
-INSTRUCTIONS = "instructions.txt"
-CREDITS = "credits.txt"
+INSTRUCTIONS_FILE_NAME = "instructions.txt"
+CREDITS_FILE_NAME = "credits.txt"
 
 
 class Player:
-    def __init__(self, name="", age=0, place_of_birth=""):
+    def __init__(self, name="", age=0, place_of_birth="", bank_balance=0.0):
         self.__name = name
         self.__age = age
         self.__place_of_birth = place_of_birth
+        self.__bank_balance = bank_balance
 
     def get_age(self):
         return self.__age
@@ -52,13 +53,13 @@ def print_file_contents(text_file):
 
 
 def parse_required_text_files():
-    instructions_file = open_a_file(INSTRUCTIONS)
+    instructions_file = open_a_file(INSTRUCTIONS_FILE_NAME)
     if instructions_file is not None:
         print_file_contents(instructions_file)
         instructions_file.close()
 
-    credits_file = open_a_file(CREDITS)
-    credits_file.close()
+    credits_file = open_a_file(CREDITS_FILE_NAME)
+    return credits_file
 
 
 def generate_random_value(desired_high_limit=10):
@@ -199,14 +200,13 @@ def ask_place_of_birth():
     return place_of_birth
 
 
-def print_credits():
-    credits_file = open_a_file("credits.txt")
+def print_credits(credits_file):
     print_file_contents(credits_file)
     
 
-def life_path_turku():
+def life_path_turku(credits_file):
     print("Who would want to be born in Turku...")
-    print_credits()
+    print_credits(credits_file)
 
 
 def life_path_not_turku():
@@ -214,15 +214,14 @@ def life_path_not_turku():
     born in Turku, i.e. not to die immediately."""
 
 
-def life_path_according_to_place_of_birth(place_of_birth):
+def is_place_of_birth_legal(place_of_birth):
 
     if place_of_birth == "Helsinki":
-        life_path_not_turku()
+        return True
     elif place_of_birth == "Tampere":
-        life_path_not_turku()
+        return True
     else:
-        life_path_turku()
-        return None
+        return False
 
 
 def main():
@@ -232,17 +231,19 @@ def main():
     # Booleans
     is_place_of_birth_valid = False
 
-    player = Player()
+    # Files
+    credits_file = parse_required_text_files()
 
-    parse_required_text_files()
+    player = Player()
 
     # Asking information from the player
     player.set_name(ask_player_name())
     player.set_place_of_birth(ask_place_of_birth())
 
-    if life_path_according_to_place_of_birth(player.get_place_of_birth()) \
-            is None:
-        return
+    if not is_place_of_birth_legal(player.get_place_of_birth()):
+        life_path_turku(credits_file)
+    else:
+        life_path_not_turku()
 
 
 if __name__ == "__main__":
